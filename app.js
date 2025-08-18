@@ -20,13 +20,14 @@ const reset=()=>{
     userNo.innerText=userCount;
     compCount=0;
     compNo.innerText=compCount;
-    removeBgColour();
-    msg.classList.add("msg");
+    
+    
 }
 resetBtn.addEventListener("click",()=>{
     reset();
     msg.innerText="Play Your Move";
-    
+    removeBgColour();
+    msg.classList.add("msg");
 })
 const bgGreen=()=>{
     msg.classList.add("msg-BgGreen");
@@ -38,14 +39,16 @@ const bgRed=()=>{
 }
 const checkFinalWin=(userCount,compCount)=>{
     if(userCount==5){
-        msg.innerText="YOU WIN"
         bgGreen();
-        setTimeout(()=> reset(), 200);
+        msg.innerText="YOU WIN"
+        setTimeout(()=> reset(), 1000);
+        
     }
     else if(compCount==5){
-        msg.innerText="YOU LOST, Computer Win";
         bgRed();
-        setTimeout(()=> reset(), 200);
+        msg.innerText="YOU LOST, Computer Win";
+        setTimeout(()=> reset(), 1000);
+        
     }
 }
 
