@@ -100,7 +100,7 @@ margin-top:1rem;
 
 }
 @media (max-width:768px){
-    main{
+    .choices-container{
       gap:2rem;  
     }
     .choice,img{
@@ -109,7 +109,7 @@ margin-top:1rem;
     }
 }
 @media (max-width:650px){
-    main{
+    .choices-container{
         gap:1.5rem;
     }
     .choice,img{
@@ -123,11 +123,14 @@ margin-top:1rem;
 
 @media (max-width:415px){
     .choice,img{
-    height:100px;
-    width:100px;
+    height:85px;
+    width:85px;
     }
     #msg-container{
     font-size:1rem;
+    }
+    .choices-container{
+      gap:1rem;  
     }
 }
 

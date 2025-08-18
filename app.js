@@ -15,33 +15,57 @@ const removeBgColour=()=>{
     msg.classList.remove("msg-BgGreen");
     msg.classList.remove("msg-BgRed");
 }
-resetBtn.addEventListener("click",()=>{
+const reset=()=>{
     userCount=0;
     userNo.innerText=userCount;
     compCount=0;
     compNo.innerText=compCount;
-    msg.innerText="Play Your Move";
-   removeBgColour();
+    removeBgColour();
     msg.classList.add("msg");
+}
+resetBtn.addEventListener("click",()=>{
+    reset();
+    msg.innerText="Play Your Move";
+    
 })
+const bgGreen=()=>{
+    msg.classList.add("msg-BgGreen");
+    msg.classList.remove("msg-BgRed");
+}
+const bgRed=()=>{
+    msg.classList.add("msg-BgRed");
+    msg.classList.remove("msg-BgGreen");
+}
+const checkFinalWin=(userCount,compCount)=>{
+    if(userCount==5){
+        msg.innerText="YOU WIN"
+        bgGreen();
+        setTimeout(()=> reset(), 200);
+    }
+    else if(compCount==5){
+        msg.innerText="YOU LOST, Computer Win";
+        bgRed();
+        setTimeout(()=> reset(), 200);
+    }
+}
+
 const winner=(userWin,userChoice,compChoice)=>{
     if(userWin){
         msg.innerText=`YOU WIN, your ${userChoice} beats ${compChoice}`;
-        msg.classList.add("msg-BgGreen");
-        msg.classList.remove("msg-BgRed");
+        bgGreen();
         userCount++;
         userNo.classList.add("score");
         userNo.innerText=userCount;
     }
     else{
         msg.innerText=`YOU LOST, ${compChoice} beats your ${userChoice}`;
-        msg.classList.add("msg-BgRed");
-        msg.classList.remove("msg-BgGreen");
+        bgRed();
         compCount++;
         compNo.classList.add("score");
         compNo.innerText=compCount;
     }
-
+    checkFinalWin(userCount,compCount);
+    
 }
 const removeScore=()=>{
     userNo.classList.remove("score");
